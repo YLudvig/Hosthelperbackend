@@ -10,7 +10,6 @@ import org.springframework.security.web.SecurityFilterChain;
 //Simple config file to allow calls on localhost/local network
 //Allows all calls to authenticate/login to profile
 //When logged into profile all calls are permitted but only that profiles info should be fetched
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -21,6 +20,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/remote/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form.disable())
