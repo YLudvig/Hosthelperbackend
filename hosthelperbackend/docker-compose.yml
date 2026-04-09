@@ -1,3 +1,5 @@
+# !! If changes made in this file to credentials before creating the DB remember to make same changes in application.properties file to avoid breaking the DB connection !!
+
 services:
   db:
     image: postgres:15-alpine
