@@ -22,7 +22,7 @@ public class RemoteDTO {
         remote.setPort(22);
         remote.setUsername(remoteDTO.getUsername());
         remote.setRemotePassword(remoteDTO.getRemotePassword());
-        return remote; 
+        return remote;
     }
 
     public UUID getRemoteId() {

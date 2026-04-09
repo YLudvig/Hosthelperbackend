@@ -2,11 +2,8 @@ package com.hosthelperbackend.hosthelperbackend.DTO;
 
 import com.hosthelperbackend.hosthelperbackend.model.User;
 
-import java.util.UUID;
-
 public class UserDTO {
 
-    private UUID userId;
     private String name;
     private String password;
 
@@ -20,14 +17,6 @@ public class UserDTO {
     public UserDTO(String name, String password){
         this.name = name;
         this.password = password;
-    }
-
-    public UUID getUserId() {
-        return userId;
-    }
-
-    public void setUserId(UUID userId) {
-        this.userId = userId;
     }
 
     public String getName() {

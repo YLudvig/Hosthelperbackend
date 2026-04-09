@@ -4,6 +4,9 @@ import java.util.UUID;
 
 import jakarta.persistence.*;
 
+//User entity
+//Name set to unique so that several profiles with same name can't break the app
+//Runs locally so no need for email
 @Entity
 @Table(name="app_user")
 public class User {
