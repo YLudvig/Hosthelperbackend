@@ -7,6 +7,7 @@ import java.util.UUID;
 //Entity for remotes (other computers and your own)
 //For remotes we need to store info about the IP, the username and the password
 //Also storing nickname, last checked timestamp description to enable user to clearly separate the pis
+//Remotes is the name used in this name for computers/pis
 @Entity
 @Table(name="remote")
 public class Remote {

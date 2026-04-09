@@ -12,7 +12,7 @@ import java.util.UUID;
 
 public interface RemoteRepository extends JpaRepository<Remote, UUID> {
 
-    //Method to get all of users remotes
+    //Query to get all of users remotes
     @Query(value = """
             SELECT * 
             FROM remote
@@ -21,7 +21,7 @@ public interface RemoteRepository extends JpaRepository<Remote, UUID> {
     List<Remote> findAllRemotesByUserID(UUID userId);
 
 
-    //Method to delete remotes by remoteId
+    //Query to delete remotes by remoteId
     @Modifying
     @Transactional
     @Query(value = """
