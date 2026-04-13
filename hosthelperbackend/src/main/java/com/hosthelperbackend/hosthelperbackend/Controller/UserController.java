@@ -26,10 +26,13 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody UserDTO dto){
+    public ResponseEntity<?> login(@RequestBody UserDTO dto){
         return userService.login(dto)
-                ? ResponseEntity.ok("Login success.")
-                : ResponseEntity.status(401).body("Failure");
+                .map(userId -> ResponseEntity.ok().body(java.util.Map.of(
+                        "message", "Login successful",
+                        "userId", userId
+                )))
+                .orElse(ResponseEntity.status(401).body(java.util.Map.of("message", "Login failed")));
     }
 
 }

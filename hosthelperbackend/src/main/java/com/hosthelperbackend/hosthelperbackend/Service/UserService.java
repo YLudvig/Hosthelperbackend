@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Service
 public class UserService {
 
@@ -26,9 +29,9 @@ public class UserService {
     }
 
     // Login method, checks that hashed input password matches the hashed password stored in db
-    public boolean login(UserDTO dto){
+    public Optional<UUID> login(UserDTO dto){
         return userRepository.findByName(dto.getName())
-                .map(user -> passwordEncoder.matches(dto.getPassword(), user.getPassword()))
-                .orElse(false);
+                .filter(user -> passwordEncoder.matches(dto.getPassword(), user.getPassword()))
+                .map(User::getUserId);
     }
 }
