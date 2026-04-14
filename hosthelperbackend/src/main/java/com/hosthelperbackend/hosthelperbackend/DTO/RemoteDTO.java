@@ -25,6 +25,15 @@ public class RemoteDTO {
         return remote;
     }
 
+    public RemoteDTO(UUID userId, String nickname, String ipAddress, int port, String username, String remotePassword) {
+        this.userId = userId;
+        this.nickname = nickname;
+        this.ipAddress = ipAddress;
+        this.port = port;
+        this.username = username;
+        this.remotePassword = remotePassword;
+    }
+
     public UUID getRemoteId() {
         return remoteId;
     }
