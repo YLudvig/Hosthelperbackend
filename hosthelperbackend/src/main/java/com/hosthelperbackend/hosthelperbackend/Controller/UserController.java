@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("api/auth")
 public class UserController {
@@ -16,23 +18,23 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody UserDTO dto){
+    public ResponseEntity<Map<String, String>> register(@RequestBody UserDTO dto){
         try {
             userService.registerUser(dto);
-            return ResponseEntity.status(201).body("User created");
+            return ResponseEntity.status(201).body(Map.of("message", "User created"));
         } catch (Exception e) {
-            return ResponseEntity.status(400).body("Error creating user, possible duplicate username");
+            return ResponseEntity.status(400).body(Map.of("message", "Error creating user, possible duplicate username"));
         }
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserDTO dto){
         return userService.login(dto)
-                .map(userId -> ResponseEntity.ok().body(java.util.Map.of(
+                .map(userId -> ResponseEntity.ok().body(Map.of(
                         "message", "Login successful",
                         "userId", userId
                 )))
-                .orElse(ResponseEntity.status(401).body(java.util.Map.of("message", "Login failed")));
+                .orElse(ResponseEntity.status(401).body(Map.of("message", "Login failed")));
     }
 
 }
