@@ -9,6 +9,8 @@ public class RemoteDTO {
 
     private UUID userId;
 
+    private String description;
+
     private String nickname;
     private String ipAddress;
     private int port;
@@ -18,6 +20,7 @@ public class RemoteDTO {
     public static Remote DTOToRemote(RemoteDTO remoteDTO){
         Remote remote = new Remote();
         remote.setNickname(remoteDTO.getNickname());
+        remote.setDescription(remoteDTO.getDescription());
         remote.setIpAddress(remoteDTO.getIpAddress());
         remote.setPort(22);
         remote.setUsername(remoteDTO.getUsername());
@@ -25,9 +28,10 @@ public class RemoteDTO {
         return remote;
     }
 
-    public RemoteDTO(UUID userId, String nickname, String ipAddress, int port, String username, String remotePassword) {
+    public RemoteDTO(UUID userId, String nickname, String description, String ipAddress, int port, String username, String remotePassword) {
         this.userId = userId;
         this.nickname = nickname;
+        this.description = description;
         this.ipAddress = ipAddress;
         this.port = port;
         this.username = username;
@@ -56,6 +60,14 @@ public class RemoteDTO {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getIpAddress() {

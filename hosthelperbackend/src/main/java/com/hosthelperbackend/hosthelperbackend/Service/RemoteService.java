@@ -31,6 +31,7 @@ public class RemoteService {
         remoteRepository.updateRemote(
                 remoteId,
                 dto.getNickname(),
+                dto.getDescription(),
                 dto.getIpAddress(),
                 dto.getPort(),
                 dto.getUsername(),

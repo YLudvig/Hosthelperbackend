@@ -36,12 +36,14 @@ public interface RemoteRepository extends JpaRepository<Remote, UUID> {
     @Transactional
     @Query(value = """
             UPDATE remote 
-            SET nickname = :nickname, ip_address = :ipAddress, port = :port, 
+            SET nickname = :nickname, description = :description,
+            ip_address = :ipAddress, port = :port, 
             username = :username, remote_password = :remotePassword
             WHERE remote_id = :remoteId
     """, nativeQuery = true)
     void updateRemote(@Param("remoteId") UUID remoteId,
                       @Param("nickname") String nickname,
+                      @Param("description") String description,
                       @Param("ipAddress") String ipAddress,
                       @Param("port") int port,
                       @Param("username") String username,

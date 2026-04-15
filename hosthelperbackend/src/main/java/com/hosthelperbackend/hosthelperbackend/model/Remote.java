@@ -19,6 +19,7 @@ public class Remote {
     private UUID userId;
 
     private String nickname;
+    private String description;
     private String ipAddress;
     private int port;
 
@@ -26,10 +27,11 @@ public class Remote {
     private String remotePassword;
 
 
-    public Remote(UUID remoteId, UUID userId, String nickname, String ipAddress, int port, String username, String remotePassword) {
+    public Remote(UUID remoteId, UUID userId, String nickname, String description, String ipAddress, int port, String username, String remotePassword) {
         this.remoteId = remoteId;
         this.userId = userId;
         this.nickname = nickname;
+        this.description = description;
         this.ipAddress = ipAddress;
         this.port = port;
         this.username = username;
@@ -62,6 +64,14 @@ public class Remote {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getIpAddress() {
