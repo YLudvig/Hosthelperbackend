@@ -18,12 +18,14 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<Map<String, String>> register(@RequestBody UserDTO dto){
+    public ResponseEntity<Map<String, String>> register(@RequestBody UserDTO dto) {
         try {
             userService.registerUser(dto);
             return ResponseEntity.status(201).body(Map.of("message", "User created"));
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(400).body(Map.of("message", e.getMessage()));
         } catch (Exception e) {
-            return ResponseEntity.status(400).body(Map.of("message", "Error creating user, possible duplicate username"));
+            return ResponseEntity.status(500).body(Map.of("message", "Error creating user, possibly duplicate username"));
         }
     }
 

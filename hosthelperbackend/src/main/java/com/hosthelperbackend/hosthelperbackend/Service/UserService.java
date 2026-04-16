@@ -23,6 +23,9 @@ public class UserService {
 
     // Method to register/create a user/profile
     public User registerUser(UserDTO dto){
+        if (userRepository.existsByName(dto.getName())){
+            throw new RuntimeException("Name already in use");
+        }
         User user = UserDTO.DTOToUser(dto);
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
         return userRepository.save(user);
